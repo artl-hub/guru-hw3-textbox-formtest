@@ -9,16 +9,14 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.*;
 
-public class RegistrationTest {
+public class PracticeFormTest {
     @BeforeAll
     static void beforAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
-        Configuration.timeout = 5000; //default 4000
+        Configuration.timeout = 5000;
     }
-
 
     @Test
     void fillFormTest() {
