@@ -68,10 +68,17 @@ public class PracticeFormTest {
 //        Check
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-        $(".table-responsive").shouldHave(text(userName), text("Ivanov"), text("art@artem.com"),
-                text("Other"), text("1234567890"), text("30 July,2008"), text("Maths"), text("Sports"),
-                text("1.png"), text("Bohnsdor 56"), text("NCR Delhi"));
-
+        $(".table-responsive").shouldHave(text(userName));
+        $(".table-responsive").shouldHave(text("Ivanov"));
+        $(".table-responsive").shouldHave(text("art@artem.com"));
+        $(".table-responsive").shouldHave(text("Other"));
+        $(".table-responsive").shouldHave(text("1234567890"));
+        $(".table-responsive").shouldHave(text("30 July,2008"));
+        $(".table-responsive").shouldHave(text("Maths"));
+        $(".table-responsive").shouldHave(text("Sports"));
+        $(".table-responsive").shouldHave(text("1.png"));
+        $(".table-responsive").shouldHave(text("Bohnsdor 56"));
+        $(".table-responsive").shouldHave(text("NCR Delhi"));
 
     }
 }
