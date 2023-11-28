@@ -1,3 +1,5 @@
+package tests;
+
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeAll;
@@ -78,7 +80,7 @@ public class RegistrationWithCommentsTest {
 
 //        Address
 
-        $("#currentAddress").setValue("Bohnsdor 56");
+        $("#currentAddress").setValue("Street 56");
 
 //        Select State
         $("#state").click();
@@ -96,7 +98,7 @@ public class RegistrationWithCommentsTest {
 
         $(".table-responsive").shouldHave(text(userName),text("Ivanov"), text("art@artem.com"),
                 text("Other"), text("1234567890"), text("30 July,2008"), text("Maths"), text("Sports"),
-                text("1.png"), text("Bohnsdor 56"), text("NCR Delhi"));
+                text("1.png"), text("Street 56"), text("NCR Delhi"));
 
 
 
