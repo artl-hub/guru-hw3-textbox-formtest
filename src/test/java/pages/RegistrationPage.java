@@ -20,8 +20,16 @@ public class RegistrationPage {
             genderWrapper = $("#genterWrapper"),
             userNumberInput = $("#userNumber"),
             calendarInput = $("#dateOfBirthInput"),
-            modalDialog = $(".modal-dialog")
-                    ;
+            modalDialog = $(".modal-dialog"),
+            titleInTable = $("#example-modal-sizes-title-lg"),
+            subjectsInput = $("#subjectsInput"),
+            hobbiesWrapper = $("#hobbiesWrapper"),
+            uploadPicture = $("#uploadPicture"),
+            currentAddress = $("#currentAddress"),
+            state = $("#state"),
+            stateCityWrapper = $("#stateCity-wrapper"),
+            city = $("#city"),
+            submit = $("#submit");
     CalendarComponent calendarComponent = new CalendarComponent();
     CheckResultComponent checkResultComponent = new CheckResultComponent();
 
@@ -76,28 +84,77 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage checkResult(String key, String value) {
-        checkResultComponent.checkResult(key,value);
+
+
+    public RegistrationPage setSubject(String value) {
+        subjectsInput.setValue(value).pressEnter();
 
         return this;
     }
 
-    public RegistrationPage  checkAppearedTable(){ // надо как то перенести в ChekResult или удалить эту проверку, посмотреть в видео
-        modalDialog.should(appear);
+    public RegistrationPage setHobbi(String value) {
+        hobbiesWrapper.$(byText(value)).click();
 
         return this;
     }
 
-    public RegistrationPage checkHeaderTextOfTable(String value){
-        $("#example-modal-sizes-title-lg").shouldHave(text(value));
-    return this;
+    public RegistrationPage selectFile(String value) {
+        uploadPicture.uploadFromClasspath(value);
+
+        return this;
+    }
+
+    public RegistrationPage setAddress(String value) {
+        currentAddress.setValue(value);
+
+        return this;
+    }
+
+    public RegistrationPage selectState(String value) {
+        state.click();
+        stateCityWrapper.$(byText(value)).click();
+
+        return this;
+    }
+
+        public RegistrationPage selectCity(String value){
+            city.click();
+            stateCityWrapper.$(byText(value)).click();
+
+            return this;
+        }
+
+    public RegistrationPage submitForm(){
+
+        submit.click();
+
+        return this;
     }
 
 
+        public RegistrationPage checkResult(String key, String value){
+            checkResultComponent.checkResult(key, value);
+
+            return this;
+        }
 
 
+        public RegistrationPage checkAppearedTable () {
+            modalDialog.should(appear);
 
 
+            return this;
+        }
+
+        public RegistrationPage checkHeaderTextOfTable (String value){
+            titleInTable.shouldHave(text(value));
+
+            return this;
+        }
 
 
-}
+    }
+
+//
+//    public Object checkAppearedTable() {
+//    }

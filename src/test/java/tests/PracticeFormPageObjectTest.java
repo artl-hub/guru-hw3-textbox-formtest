@@ -29,41 +29,17 @@ public class PracticeFormPageObjectTest extends TestBase{
                 .setGender("Other")
                 .setuserNumber("\"1234567890\"")
                 .setDateOfBirth("30","July","2008")
-        ;
-
-//        Date
-
-//        Subjects
-        $("#subjectsInput").setValue("Math").pressEnter();
-
-//        Hobbies
-        $("#hobbiesWrapper").$(byText("Sports")).click();
-
-//        Select picture (upload)
-        $("#uploadPicture").uploadFromClasspath("img/1.png");
-
-//        Address
-        $("#currentAddress").setValue("Street 56");
-
-//        Select State
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("NCR")).click();
-
-//        Select City
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Delhi")).click();
-        $("#submit").click();
-
-//        Check
-
-
-
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-
+                .setSubject("Math")
+                .setHobbi("Sports")
+                .selectFile("img/1.png")
+                .setAddress("Street 56")
+                .selectState("NCR")
+                .selectCity("Delhi")
+                .submitForm();
 
         registrationPage.checkAppearedTable()
                 .checkHeaderTextOfTable("Thanks for submitting the form")
-                .checkResult("Sutdent Name", "Alex Ivanov")
+                .checkResult("Student Name", "Alex Ivanov")
                 .checkResult("Student Email", "art@artem.com")
                 .checkResult("Gender", "Other")
                 .checkResult("Mobile", "1234567890")
