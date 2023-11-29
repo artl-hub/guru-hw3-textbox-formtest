@@ -18,6 +18,7 @@ public class PracticeFormTest {
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 5000;
+//        Configuration.holdBrowserOpen = true;
     }
 
     @Test
@@ -83,4 +84,5 @@ public class PracticeFormTest {
         $(".table-responsive").shouldHave(text("NCR Delhi"));
 
     }
+
 }

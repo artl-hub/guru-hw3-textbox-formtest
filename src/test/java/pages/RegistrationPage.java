@@ -3,7 +3,9 @@ package pages;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.CheckResultComponent;
 
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -17,8 +19,11 @@ public class RegistrationPage {
             userEmailInput = $("#userEmail"),
             genderWrapper = $("#genterWrapper"),
             userNumberInput = $("#userNumber"),
-            calendarInput = $("#dateOfBirthInput");
+            calendarInput = $("#dateOfBirthInput"),
+            modalDialog = $(".modal-dialog")
+                    ;
     CalendarComponent calendarComponent = new CalendarComponent();
+    CheckResultComponent checkResultComponent = new CheckResultComponent();
 
     public RegistrationPage openPage() {
 
@@ -72,11 +77,25 @@ public class RegistrationPage {
     }
 
     public RegistrationPage checkResult(String key, String value) {
-        $(".table-responsive").$(byText(key)).parent()
-                .shouldHave(text(value));
+        checkResultComponent.checkResult(key,value);
 
         return this;
     }
+
+    public RegistrationPage  checkAppearedTable(){ // надо как то перенести в ChekResult или удалить эту проверку, посмотреть в видео
+        modalDialog.should(appear);
+
+        return this;
+    }
+
+    public RegistrationPage checkHeaderTextOfTable(String value){
+        $("#example-modal-sizes-title-lg").shouldHave(text(value));
+    return this;
+    }
+
+
+
+
 
 
 

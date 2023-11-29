@@ -17,6 +17,8 @@ public class PracticeFormPageObjectTest extends TestBase{
     RegistrationPage registrationPage = new RegistrationPage();
 
 
+
+
     @Test
     void fillFormTest() {
 
@@ -41,7 +43,7 @@ public class PracticeFormPageObjectTest extends TestBase{
         $("#uploadPicture").uploadFromClasspath("img/1.png");
 
 //        Address
-        $("#currentAddress").setValue("Bohnsdor 56");
+        $("#currentAddress").setValue("Street 56");
 
 //        Select State
         $("#state").click();
@@ -53,24 +55,23 @@ public class PracticeFormPageObjectTest extends TestBase{
         $("#submit").click();
 
 //        Check
-        $(".modal-dialog").should(appear);
+
+
+
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-//        $(".table-responsive").shouldHave(text("Alex"));
-//        $(".table-responsive").shouldHave(text("Ivanov"));
-//        $(".table-responsive").shouldHave(text("art@artem.com"));
-
-        registrationPage.checkResult("Sutdent Name", "Alex Ivanov")
-                .checkResult("Student Email", "art@artem.com" );
 
 
-        $(".table-responsive").shouldHave(text("Other"));
-        $(".table-responsive").shouldHave(text("1234567890"));
-        $(".table-responsive").shouldHave(text("30 July,2008"));
-        $(".table-responsive").shouldHave(text("Maths"));
-        $(".table-responsive").shouldHave(text("Sports"));
-        $(".table-responsive").shouldHave(text("1.png"));
-        $(".table-responsive").shouldHave(text("Bohnsdor 56"));
-        $(".table-responsive").shouldHave(text("NCR Delhi"));
-
+        registrationPage.checkAppearedTable()
+                .checkHeaderTextOfTable("Thanks for submitting the form")
+                .checkResult("Sutdent Name", "Alex Ivanov")
+                .checkResult("Student Email", "art@artem.com")
+                .checkResult("Gender", "Other")
+                .checkResult("Mobile", "1234567890")
+                .checkResult("Date of Birth", "30 July,2008")
+                .checkResult("Subjects", "Maths")
+                .checkResult("Hobbies", "Sports")
+                .checkResult("Picture", "1.png")
+                .checkResult("Address", "Street 56")
+                .checkResult("State and City", "NCR Delhi");
     }
 }
