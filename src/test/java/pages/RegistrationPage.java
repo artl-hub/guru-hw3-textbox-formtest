@@ -5,8 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 import pages.components.CheckResultComponent;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -71,7 +70,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setuserNumber(String value) {
-        userNumberInput.$(byText(value)).click();
+        userNumberInput.setValue(value);
 
         return this;
     }
@@ -83,7 +82,6 @@ public class RegistrationPage {
 
         return this;
     }
-
 
 
     public RegistrationPage setSubject(String value) {
@@ -117,14 +115,14 @@ public class RegistrationPage {
         return this;
     }
 
-        public RegistrationPage selectCity(String value){
-            city.click();
-            stateCityWrapper.$(byText(value)).click();
+    public RegistrationPage selectCity(String value) {
+        city.click();
+        stateCityWrapper.$(byText(value)).click();
 
-            return this;
-        }
+        return this;
+    }
 
-    public RegistrationPage submitForm(){
+    public RegistrationPage submitForm() {
 
         submit.click();
 
@@ -132,29 +130,32 @@ public class RegistrationPage {
     }
 
 
-        public RegistrationPage checkResult(String key, String value){
-            checkResultComponent.checkResult(key, value);
+    public RegistrationPage checkResult(String key, String value) {
+        checkResultComponent.checkResult(key, value);
 
-            return this;
-        }
-
-
-        public RegistrationPage checkAppearedTable () {
-            modalDialog.should(appear);
+        return this;
+    }
 
 
-            return this;
-        }
+    public RegistrationPage checkAppearedTable() {
+        modalDialog.should(appear);
 
-        public RegistrationPage checkHeaderTextOfTable (String value){
-            titleInTable.shouldHave(text(value));
 
-            return this;
-        }
+        return this;
+    }
+
+    public RegistrationPage checkHeaderTextOfTable(String value) {
+        titleInTable.shouldHave(text(value));
+
+        return this;
+    }
+
+    public RegistrationPage checkEmptyFormNotSended() {
+        modalDialog.shouldBe(hidden);
+
+        return this;
 
 
     }
+}
 
-//
-//    public Object checkAppearedTable() {
-//    }
