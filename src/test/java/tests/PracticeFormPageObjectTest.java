@@ -1,10 +1,13 @@
 package tests;
+import data.DataPom;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
 public class PracticeFormPageObjectTest extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
+    DataPom dataPom = new DataPom();
+
     @Test
     void fillFormTest() {
 
@@ -15,7 +18,7 @@ public class PracticeFormPageObjectTest extends TestBase {
                 .setEmail("art@artem.com")
                 .setGender("Other")
                 .setuserNumber("1234567890")
-                .setDateOfBirth("30","July","2008")
+                .setDateOfBirth(dataPom.day, dataPom.month, dataPom.year)
                 .setSubject("Math")
                 .setHobbi("Sports")
                 .selectFile("img/1.png")
@@ -30,7 +33,7 @@ public class PracticeFormPageObjectTest extends TestBase {
                 .checkResult("Student Email", "art@artem.com")
                 .checkResult("Gender", "Other")
                 .checkResult("Mobile", "1234567890")
-                .checkResult("Date of Birth", "30 July,2008")
+                .checkResult("Date of Birth", dataPom.birthday)
                 .checkResult("Subjects", "Maths")
                 .checkResult("Hobbies", "Sports")
                 .checkResult("Picture", "1.png")
